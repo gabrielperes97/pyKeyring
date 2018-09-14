@@ -1,0 +1,5 @@
+dist/*
+build/*
+pyKeyring.egg-info/*
+*.db
+__pycache__/*

@@ -6,18 +6,45 @@ def read(fname):
     path = os.path.join(os.path.dirname(__file__), fname)
     return open(path, encoding='utf-8').read()
 
+if os.name == "nt":
+    scripts = None
+    entry_points = {
+        'console_scripts': [
+            'keyring.py=keyring:_main'
+        ],
+    }
+else:
+    scripts = ['keyring.py']
+entry_points = None
+
 setup(
     name='pyKeyring',
-    version='0.1',
+    py_modules=['keyring', 'security', 'storage', 'utils'],
+    version="0.1",
     description='A simple and secure tool to store passwords',
+    long_description=read('README.md'),
+    url='https://github.com/gabrielperes97/pyKeyring',
     author='Gabriel Leopoldino',
     author_email='gabrielperes97@gmail.com',
-    url='https://github.com/gabrielperes97/pyKeyring',
-    install_requires=['tinydb', 'cryptography'],
-    license = "MIT",
-    long_description=read('README.md'),
-    project_urls={
-        'Issues': 'https://github.com/gabrielperes97/pyKeyring/issues',
-    },
-    packages = find_packages(exclude=['test']),
+    license='MIT',
+    classifiers=[
+        'Development Status :: 5 - Production/Stable',
+        'Intended Audience :: Developers',
+        'Natural Language :: English',
+        'Operating System :: POSIX',
+        'Operating System :: Microsoft :: Windows',
+        'Operating System :: MacOS :: MacOS X',
+        'Environment :: Console',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+    ],
+    tests_require=[],
+    install_requires=[
+        'tinydb',
+        'cryptography'
+    ],
+    scripts=scripts,
+    entry_points=entry_points,
 )
