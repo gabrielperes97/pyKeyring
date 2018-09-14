@@ -7,6 +7,7 @@ from security import DefaultCryptography
 from storage import SecureStorage
 import os
 import sys
+import pyperclip
 
 def create(args):
     print("Creating new database named in ", args.file)
@@ -87,7 +88,11 @@ def get(args):
         last_update = datetime.fromisoformat(password_model["last_update"])
         print("The last access was in ", last_update.strftime("%d/%m/%Y %I:%M%p"))
 
-    print("The password for ", args.label, " is: ", password)
+    if (args.to_clipboard):
+        pyperclip.copy(password)
+        print("Password copied to clipboard")
+    else:
+        print("The password for ", args.label, " is: ", password)
 
     db.update(operations.set("last_access", datetime.now().isoformat()), doc_ids=[password_model.doc_id])
 
@@ -144,6 +149,7 @@ add_parser.set_defaults(func=add)
 
 get_parser = subparsers.add_parser("get", help="get a password")
 get_parser.add_argument("label", help="label for the password")
+get_parser.add_argument("-c", "--to-clipboard", action="store_true" ,help="Copy the password to clipboard and don't show it")
 get_parser.set_defaults(func=get)
 
 update_parser = subparsers.add_parser("update", help="update a password")
