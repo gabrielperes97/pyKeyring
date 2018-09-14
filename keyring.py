@@ -152,7 +152,11 @@ def generate(args):
     else:
         print("The generated password is: ", password)
 
-
+def list_labels(args):
+    print("Listing all labels")
+    db = login(args.file)
+    for p in db.all():
+        print(p['label'])
     
 # Menu 
 parser = ArgumentParser()
@@ -189,6 +193,9 @@ generate_parser.add_argument("-e", "--except-chars", metavar="except_chars", def
 generate_parser.add_argument("-s", "--save", metavar="label", help="Save the generate password using this label")
 generate_parser.add_argument("-c", "--to-clipboard", action="store_true", help="Copy the password to clipboard and don't show it")
 generate_parser.set_defaults(func=generate)
+
+list_parser = subparsers.add_parser("list", help="List all password labels")
+list_parser.set_defaults(func=list_labels)
 
 
 if __name__ == "__main__":
