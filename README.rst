@@ -18,7 +18,7 @@ Create a database
 ==================
 .. code-block:: console
 
-    foo@bar:~$ keyring -f /path/to/keyring.db create
+    foo@bar:~$ keyring.py -f /path/to/keyring.db create
     
 The default database file is named keyring.db. If you don't use the -f argument, pyKeyring will use this name. 
 
@@ -26,7 +26,7 @@ Insert a password
 ==================
 .. code-block:: console
 
-    foo@bar:~$ keyring add password_label
+    foo@bar:~$ keyring.py add password_label
 
 The password_label is used to label your password :)
 
@@ -34,24 +34,62 @@ Get a password
 ==============
 .. code-block:: console
 
-    foo@bar:~$ keyring get password_label
+    foo@bar:~$ keyring.py get password_label
 
 
 If you don't want to print the password in the terminal you can use the argument -c to copy the password to clipboard.
 
 .. code-block:: console
 
-    foo@bar:~$ keyring get -c password_label
+    foo@bar:~$ keyring.py get -c password_label
 
 Update a password
 =================
 .. code-block:: console
 
-    foo@bar:~$ keyring update password_label
+    foo@bar:~$ keyring.py update password_label
 
 
 Remove a password
 ==================
 .. code-block:: console
 
-    foo@bar:~$ keyring remove password_label
+    foo@bar:~$ keyring.py remove password_label
+
+Generate a random password
+===========================
+.. code-block:: console
+
+    foo@bar:~$ keyring.py generate
+
+If you want to save this with a label you only need to use the -s (--save) argument.
+
+.. code-block:: console
+
+    foo@bar:~$ keyring.py generate -s label
+
+You can limit the characteres used to generate the password using the arguments:
+
+- `-l length, --length length`
+    The length for the generated password [default=12]
+
+- `-u, --no-uppercase`    
+    Don't use uppercase chars in the password
+
+-  `-ll, --no-lowercase`
+    Don't use lowercase chars in the password
+
+-  `-d, --no-digits`
+    Don't use digits in the password
+
+-  `-p, --no-punctuation`  
+    Don't use punctuation chars in the password
+
+-  `-e except_chars, --except-chars except_chars`
+    Don't use these chars in the password
+
+To generate a 8 digits password you can use:
+
+.. code-block:: console
+
+    foo@bar:~$ keyring.py generate -u -ll -p -l 8
