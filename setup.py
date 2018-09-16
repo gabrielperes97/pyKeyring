@@ -22,7 +22,7 @@ setup(
     py_modules=['keyring', 'security', 'storage', 'utils'],
     version="0.1",
     description='A simple and secure tool to store passwords',
-    long_description=read('README.md'),
+    long_description=read('README.rst'),
     url='https://github.com/gabrielperes97/pyKeyring',
     author='Gabriel Leopoldino',
     author_email='gabrielperes97@gmail.com',
