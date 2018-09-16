@@ -34,6 +34,7 @@ setup(
         'Environment :: Console',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
+	'Programming Language :: Python :: 3.6',
         'Topic :: Security',
         'Topic :: Security :: Cryptography',
         'Topic :: Utilities'

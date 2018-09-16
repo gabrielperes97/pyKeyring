@@ -160,7 +160,7 @@ def list_labels(args):
     
 # Menu 
 parser = ArgumentParser()
-subparsers = parser.add_subparsers(title="Operations", required=True, dest="operation")
+subparsers = parser.add_subparsers(title="Operations", dest="operation")
 parser.add_argument("-f", "--file", metavar="FILE", help="Database file", default="keyring.db")
 
 create_parser = subparsers.add_parser("create", help="Create database keyring")
