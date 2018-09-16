@@ -9,6 +9,33 @@ Introdution
 
 pyKeyring is a tool to store encrypted passwords in a simple database file. 
 
+Installation
+*************
+
+Using pip
+=========
+
+You need Python 3 installed on your system.
+
+The latest release can be installed from `pypi <https://pypi.org/project/pyKeyring/>`_ via pip:
+
+.. code-block:: console
+
+    foo@bar:~# pip install pykeyring
+
+Manual Installation
+====================
+
+Manual installation allows you to run the latest development version from this repository.
+
+pyKeyring depends on `TinyDB <https://github.com/msiemens/tinydb/>`_ and `Criptography <https://cryptography.io/en/latest/>`_ to run.
+
+You can install pyKeyring with all dependecies by running:
+
+.. code-block:: console
+
+    foo@bar:~# python setup.py install
+
 Usage
 ***********
 
