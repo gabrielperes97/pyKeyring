@@ -33,6 +33,9 @@ setup(
         'Natural Language :: English',
         'Environment :: Console',
         'License :: OSI Approved :: MIT License',
+        'Operating System :: POSIX',
+        'Operating System :: Microsoft :: Windows',
+        'Operating System :: MacOS :: MacOS X',
         'Programming Language :: Python :: 3',
 	    'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.5',
@@ -45,7 +48,7 @@ setup(
     install_requires=[
         'tinydb>=3.11.1',
         'cryptography>=2.3.1',
-	'pyperclip>=1.6.4'
+	    'pyperclip>=1.6.4'
     ],
     scripts=scripts,
     entry_points=entry_points,

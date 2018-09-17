@@ -2,6 +2,8 @@
 pyKeyring
 ==========
 
+|Build Status| |Version|
+
 A simple and secure tool to store passwords
 
 Introdution 
