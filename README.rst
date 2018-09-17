@@ -39,7 +39,7 @@ You can install pyKeyring with all dependecies by running:
 Usage
 ***********
 
-pyKeyring is much simple to use.
+pyKeyring is very simple to use.
 
 Create a database
 ==================
@@ -115,7 +115,7 @@ You can limit the characteres used to generate the password using the arguments:
 -  `-e except_chars, --except-chars except_chars`
     Don't use these chars in the password
 
-To generate a 8 digits password you can use:
+To generate an 8 digits password you can use:
 
 .. code-block:: console
 

@@ -80,13 +80,13 @@ def get(args):
     
 
     if (password_model["last_access"] != None):
-        last_access = datetime.fromisoformat(password_model["last_access"])
+        last_access = datetime.strptime(password_model["last_access"], "%Y-%m-%dT%H:%M:%S.%f")
         print("The last access was in ", last_access.strftime("%d/%m/%Y %I:%M%p"))
     else: 
         print("First access for this password")
     
     if (password_model["last_update"] != None):
-        last_update = datetime.fromisoformat(password_model["last_update"])
+        last_update = datetime.strptime(password_model["last_update"], "%Y-%m-%dT%H:%M:%S.%f")
         print("The last access was in ", last_update.strftime("%d/%m/%Y %I:%M%p"))
 
     if (args.to_clipboard):
@@ -160,30 +160,31 @@ def list_labels(args):
     
 # Menu 
 parser = ArgumentParser()
-subparsers = parser.add_subparsers(title="Operations", dest="operation")
+operation_subparser = parser.add_subparsers(title="Operations", dest="operation")
+operation_subparser.required = True
 parser.add_argument("-f", "--file", metavar="FILE", help="Database file", default="keyring.db")
 
-create_parser = subparsers.add_parser("create", help="Create database keyring")
+create_parser = operation_subparser.add_parser("create", help="Create database keyring")
 create_parser.set_defaults(func=create)
 
-add_parser = subparsers.add_parser("add", help="Add a password")
+add_parser = operation_subparser.add_parser("add", help="Add a password")
 add_parser.add_argument("label", help="label for the password")
 add_parser.set_defaults(func=add)
 
-get_parser = subparsers.add_parser("get", help="get a password")
+get_parser = operation_subparser.add_parser("get", help="get a password")
 get_parser.add_argument("label", help="label for the password")
 get_parser.add_argument("-c", "--to-clipboard", action="store_true", help="Copy the password to clipboard and don't show it")
 get_parser.set_defaults(func=get)
 
-update_parser = subparsers.add_parser("update", help="update a password")
+update_parser = operation_subparser.add_parser("update", help="update a password")
 update_parser.add_argument("label", help="label for the password")
 update_parser.set_defaults(func=update)
 
-remove_parser = subparsers.add_parser("remove", help="Remove a password")
+remove_parser = operation_subparser.add_parser("remove", help="Remove a password")
 remove_parser.add_argument("label", help="label for the password to remove")
 remove_parser.set_defaults(func=remove)
 
-generate_parser = subparsers.add_parser("generate", help="generate a password")
+generate_parser = operation_subparser.add_parser("generate", help="generate a password")
 generate_parser.add_argument("-l", "--length", metavar="length", type=int, default="12", help="The length for the generated password [default=12]")
 generate_parser.add_argument("-u", "--no-uppercase", action="store_true", help="Don't use uppercase chars in the password")
 generate_parser.add_argument("-ll", "--no-lowercase", action="store_true", help="Don't use lowercase chars in the password")
@@ -194,7 +195,7 @@ generate_parser.add_argument("-s", "--save", metavar="label", help="Save the gen
 generate_parser.add_argument("-c", "--to-clipboard", action="store_true", help="Copy the password to clipboard and don't show it")
 generate_parser.set_defaults(func=generate)
 
-list_parser = subparsers.add_parser("list", help="List all password labels")
+list_parser = operation_subparser.add_parser("list", help="List all password labels")
 list_parser.set_defaults(func=list_labels)
 
 
