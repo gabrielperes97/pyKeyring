@@ -16,7 +16,7 @@ pyKeyring
 .. |GitHub license| image:: https://img.shields.io/github/license/gabrielperes97/pyKeyring.svg
    :target: https://github.com/gabrielperes97/pyKeyring/blob/master/LICENSE
 
-|pypi version| |PyPI pyversions| |GitHub license|
+|Build Status| |pypi version| |PyPI pyversions| |GitHub license|
 
 A simple and secure tool to store passwords
 
