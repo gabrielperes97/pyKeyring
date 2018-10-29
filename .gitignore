@@ -3,3 +3,8 @@ build/*
 pyKeyring.egg-info/*
 *.db
 __pycache__/*
+.vscode/*
+.directory
+Dockerfile*
+docker-compose.yml
+docker/*
