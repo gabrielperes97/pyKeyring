@@ -6,13 +6,13 @@ pyKeyring
     :alt: Travis (.org)   
     :target: https://travis-ci.org/gabrielperes97/pyKeyring
 
-.. |pypi version| image:: https://badge.fury.io/py/ansicolortags.svg
+.. |pypi version| image:: https://img.shields.io/pypi/v/pyKeyring.svg
    :target: https://pypi.python.org/pypi/pykeyring/
 
-.. |PyPI pyversions| image:: https://img.shields.io/pypi/gabrielperes97/pyKeyring.svg
-   :target: https://pypi.python.org/pypi/pykeyring/
+.. |PyPI pyversions| image:: https://img.shields.io/pypi/pyversions/pyKeyring.svg
+   :alt: PyPI - Python Version
 
-.. |GitHub license| image:: https://img.shields.io/github/license/Naereen/StrapDown.js.svg
+.. |GitHub license| image:: https://img.shields.io/github/license/gabrielperes97/pyKeyring.svg
    :target: https://github.com/gabrielperes97/pyKeyring/blob/master/LICENSE
 
 |Build Status| |pypi version| |PyPI pyversions| |GitHub license|
@@ -63,6 +63,7 @@ Create a database
     foo@bar:~$ keyring.py -f /path/to/keyring.db create
     
 The default database file is named keyring.db. If you don't use the -f argument, pyKeyring will use this name. 
+You can use the -F argument to specify the storage format, BSON (default) or JSON.
 
 Insert a password
 ==================
