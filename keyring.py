@@ -3,7 +3,7 @@ from tinydb import TinyDB, Query, operations
 from getpass import getpass
 from datetime import datetime
 from cryptography.fernet import InvalidToken
-from security import DefaultCryptography
+from security import DefaultCryptography, StorageFormat
 from storage import SecureStorage
 from utils import generateKey
 import os
@@ -11,7 +11,17 @@ import sys
 import pyperclip
 
 def create(args):
-    print("Creating new database named in ", args.file)
+    format = args.storage_format.lower()
+    if (format == 'json'):
+        storage_format = StorageFormat.JSON
+    elif (format == 'bson'):
+        storage_format = StorageFormat.BSON
+    else:
+        storage_format = None
+        print("Storage format not exists", file=sys.stderr)
+        exit(-1)
+
+    print("Creating new database in", args.file, "using",storage_format.name, "format")
 
     if (os.path.isfile(args.file)):
         print("Database file already exists", file=sys.stderr)
@@ -25,7 +35,7 @@ def create(args):
             exit(-1)
         else:
             try:
-                SecureStorage.create(filename=args.file, password=password)
+                SecureStorage.create(filename=args.file, password=password, storage_format=storage_format)
                 print("Database created successfully")
             except Exception as err:
                 print("There something wrong", file=sys.stderr)
@@ -165,6 +175,7 @@ operation_subparser.required = True
 parser.add_argument("-f", "--file", metavar="FILE", help="Database file", default="keyring.db")
 
 create_parser = operation_subparser.add_parser("create", help="Create database keyring")
+create_parser.add_argument("-F", "--storage-format", metavar="format", default="bson", help="The storage format (JSON or BSON) [default=BSON]")
 create_parser.set_defaults(func=create)
 
 add_parser = operation_subparser.add_parser("add", help="Add a password")

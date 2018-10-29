@@ -4,11 +4,25 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 import os
 import base64
+from enum import Enum
 
+class StorageFormat(Enum):
+    BSON = 2
+    JSON = 1
+
+# CryptographyDependencies format
+# salt_size (4 bytes) | salt (salt_size bytes) | storage_format (4 byte) 
 class DefaultCryptography:
 
+    SALT_BYTES = 4
+    STORAGE_BYTES = 4
+    SALT_LENGTH = 64
+
     def __init__(self, password, dependencies):
-        self.salt = dependencies
+        self.salt_length = int.from_bytes(dependencies[:self.SALT_BYTES], byteorder='big')
+        self.salt = dependencies[self.SALT_BYTES:self.salt_length+self.SALT_BYTES]
+        self.storage_format = StorageFormat(int.from_bytes(dependencies[self.salt_length+self.SALT_BYTES:self.salt_length+self.SALT_BYTES+self.STORAGE_BYTES], byteorder='big'))
+
         self.password = password
         if (type(self.password) == str):
             self.password = self.password.encode("utf-8")
@@ -17,9 +31,10 @@ class DefaultCryptography:
 
 
     @staticmethod
-    def generateCryptographyDependencies():
-        salt = os.urandom(64)
-        return salt
+    def generateCryptographyDependencies(storage_format=StorageFormat.BSON):
+        salt = os.urandom(DefaultCryptography.SALT_LENGTH)
+        salt_length_bytes = DefaultCryptography.SALT_LENGTH.to_bytes(DefaultCryptography.SALT_BYTES, byteorder='big')
+        return salt_length_bytes + salt + storage_format.value.to_bytes(DefaultCryptography.STORAGE_BYTES, byteorder='big')
     
     def deriveKey(self):
         kdf = PBKDF2HMAC(
