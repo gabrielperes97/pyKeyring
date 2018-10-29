@@ -1,8 +1,15 @@
 language: python
+
+sudo: false
+
 python:
   - "3.7"
   - "3.6"
   - "3.5"
   - "3.4"
 
-install: pip install tinydb cryptography pyperclip
+before_install: 
+  - pip install --upgrade pip
+  
+install: 
+  - pip install tinydb cryptography pyperclip
