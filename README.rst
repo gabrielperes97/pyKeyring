@@ -11,6 +11,7 @@ pyKeyring
 
 .. |PyPI pyversions| image:: https://img.shields.io/pypi/pyversions/pyKeyring.svg
    :alt: PyPI - Python Version
+   :target: https://pypi.python.org/pypi/pykeyring/
 
 .. |GitHub license| image:: https://img.shields.io/github/license/gabrielperes97/pyKeyring.svg
    :target: https://github.com/gabrielperes97/pyKeyring/blob/master/LICENSE
