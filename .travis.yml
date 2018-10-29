@@ -11,7 +11,7 @@ before_install:
   - pip install --upgrade pip
 
 install: 
-  - pip install tinydb cryptography pyperclip
+  - pip install tinydb cryptography pyperclip bson
 
 script:
   - python keyring.py --help
