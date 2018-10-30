@@ -1,14 +1,18 @@
 language: python
 python:
-  - "3.6"
-  - "3.5"
-  - "3.4"
-
-before_install: 
-  - pip install --upgrade pip
-
-install: 
-  - pip install tinydb cryptography pyperclip bson
-
+- '3.6'
+- '3.5'
+- '3.4'
+before_install:
+- pip install --upgrade pip
+install:
+- pip install tinydb cryptography pyperclip bson
 script:
-  - python keyring.py --help
+- python keyring.py --help
+deploy:
+  provider: pypi
+  user: gabrielperes97
+  password:
+    secure: BDzhEcOP160lZ8FvjsLya7spddP3+uS6XTp/YXZSeNuCFAVnGfopt2bX2bMBYbZNUFYsfDv5w6Bn37WWGI8OBcratV3F5CT9xbu+S8n9OyI0PKvbedSMMNdkWE9tQrcBw8L5iKxFzsWwNJ6B+pwV3w3iM69JYgcyiSaJ7PTf5SWDNI0nhevorVA1fEjzoVeuXvL7o6kbLkRPJi4gK7tTNvyfbajhU3VL4F3lPg2yWew+Qsb34pncCSDA3WcskIhoqTQNmpfLbTs0iOVD+pE/aPqJV+Oowj74X0Lr2TH+SkF5tBeiOUF2jdJ970ct2G4/owxkixL4PykGB9lTte5PoyUqUA4Sq1EytifCwcvQ0yWyak7DjoeOtc936RJQ5bIsUcpGh5LcUiO5sxIQ/MpTBztC4AoaRZtVfJNeG8QdOAMQ1aghJ4uEI1RH6pCBTgbPVIS4ezoAi6Qliz0cc3SfLFpAdvIJm9G7+g0VRZw6GIWEsqiGTBsC3BDGB1Ew5HF/tZel3QaJbjdnlXLTfxeWJZtKvXHQoXpTODbx/f7z+iqkvVMidUUz1Dc9YrQAGv6vsRdVRr5V+zVSPxtbTdbLwWUQKSfulnWKgR2aZ+pR7RdXRMKiHRD80eYX/oTgafIHxQGrCwJPGt3DRURp7SbkmPqk/F3GUCaDa4Q6gVOjGeQ=
+  on:
+    tags: true
