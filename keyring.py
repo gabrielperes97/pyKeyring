@@ -1,3 +1,5 @@
+#!/usr/bin/python3 -O
+
 from argparse import ArgumentParser
 from tinydb import TinyDB, Query, operations
 from getpass import getpass
