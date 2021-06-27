@@ -20,7 +20,7 @@ entry_points = None
 setup(
     name='pyKeyring',
     py_modules=['keyring', 'security', 'storage', 'utils'],
-    version="0.3",
+    version="0.4",
     description='A simple and secure tool to store passwords',
     long_description=read('README.rst'),
     url='https://github.com/gabrielperes97/pyKeyring',
