@@ -20,7 +20,7 @@ entry_points = None
 setup(
     name='pyKeyring',
     py_modules=['keyring', 'security', 'storage', 'utils'],
-    version="0.4",
+    version="0.5",
     description='A simple and secure tool to store passwords',
     long_description=read('README.rst'),
     url='https://github.com/gabrielperes97/pyKeyring',
@@ -47,7 +47,7 @@ setup(
     tests_require=[],
     install_requires=[
         'tinydb>=3.11.1',
-        'cryptography>=2.3.1',
+        'cryptography=2.3.1',
 	    'pyperclip>=1.6.4',
         'bson>=0.5.6'
     ],
