@@ -2,9 +2,8 @@
 pyKeyring
 ==========
 
-.. |Build Status| image:: https://img.shields.io/travis/gabrielperes97/pyKeyring.svg   
-    :alt: Travis (.org)   
-    :target: https://travis-ci.org/gabrielperes97/pyKeyring
+.. |Actions| image:: https://github.com/github/docs/actions/workflows/main.yml/badge.svg   
+    :alt: GitHub Actions   
 
 .. |pypi version| image:: https://img.shields.io/pypi/v/pyKeyring.svg
    :target: https://pypi.python.org/pypi/pykeyring/
@@ -16,7 +15,7 @@ pyKeyring
 .. |GitHub license| image:: https://img.shields.io/github/license/gabrielperes97/pyKeyring.svg
    :target: https://github.com/gabrielperes97/pyKeyring/blob/master/LICENSE
 
-|Build Status| |pypi version| |PyPI pyversions| |GitHub license|
+|Actions| |pypi version| |PyPI pyversions| |GitHub license|
 
 A simple and secure tool to store passwords
 
