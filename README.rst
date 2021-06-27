@@ -2,8 +2,9 @@
 pyKeyring
 ==========
 
-.. |Actions| image:: https://github.com/github/docs/actions/workflows/main.yml/badge.svg   
+.. |Actions| image:: https://github.com/gabrielperes97/pyKeyring/actions/workflows/python-app.yml/badge.svg  
     :alt: GitHub Actions   
+    :target: https://github.com/gabrielperes97/pyKeyring/actions/workflows/python-app.yml
 
 .. |pypi version| image:: https://img.shields.io/pypi/v/pyKeyring.svg
    :target: https://pypi.python.org/pypi/pykeyring/
