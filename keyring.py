@@ -169,7 +169,26 @@ def list_labels(args):
     db = login(args.file)
     for p in db.all():
         print(p['label'])
+
+def export(args): 
+    print("Generating csv export")
+    db = login(args.file)
+    csvPath = args.csv_path
+    csv = ""
+    for p in db.all():
+        label = p['label']
+        password = p['password'].replace('\\', '\\\\').replace('"', '\\"')
+        last_update = p["last_update"]
+        if (last_update == None):
+            last_update = ""
+        created_date = p['created_date']
+        csv += '"{label}";"{password}";{created_date};{last_update}\n'.format(label = label, password = password, created_date = created_date, last_update = last_update)
     
+    with open(csvPath, 'w') as file:
+        file.write(csv)
+        file.close()
+    print("Password list exported at {}".format(csvPath))
+
 # Menu 
 parser = ArgumentParser()
 operation_subparser = parser.add_subparsers(title="Operations", dest="operation")
@@ -196,6 +215,11 @@ update_parser.set_defaults(func=update)
 remove_parser = operation_subparser.add_parser("remove", help="Remove a password")
 remove_parser.add_argument("label", help="label for the password to remove")
 remove_parser.set_defaults(func=remove)
+
+export_parser = operation_subparser.add_parser("export", help="Export the password list in CSV format")
+export_parser.add_argument("csv_path", help="path to save the csv file")
+export_parser.set_defaults(func=export)
+
 
 generate_parser = operation_subparser.add_parser("generate", help="generate a password")
 generate_parser.add_argument("-l", "--length", metavar="length", type=int, default="12", help="The length for the generated password [default=12]")
