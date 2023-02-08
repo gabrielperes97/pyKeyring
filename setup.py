@@ -47,7 +47,7 @@ setup(
     tests_require=[],
     install_requires=[
         'tinydb>=3.11.1',
-        'cryptography==3.3.2',
+        'cryptography==39.0.1',
         'pyperclip>=1.6.4',
         'bson>=0.5.6'
     ],
